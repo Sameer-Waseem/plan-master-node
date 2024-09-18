@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const planRouter = require("./routes/plans");
 
 const app = express();
@@ -9,6 +10,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB Database successfully..."))
   .catch((e) => console.log("Could not connected to MongoDB Database", e));
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/plan", planRouter);
 
